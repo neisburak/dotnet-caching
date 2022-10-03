@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "kCSP1uaCyWuYX5Bp4Er2q993FgCd2b1Kn5itOjF8BtFHysZR45Q2TUYCePyNzpWAIIJ3upUD8DpBB+OFF4yV7Q==",
+  "success": true,
+  "projectFilePath": "/Users/burakneis/Projects/dotnet-caching/InMemoryCaching/InMemoryCaching.csproj",
+  "expectedPackageFiles": [
+    "/Users/burakneis/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/burakneis/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "/Users/burakneis/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/burakneis/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/Users/burakneis/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/Users/burakneis/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/Users/burakneis/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
