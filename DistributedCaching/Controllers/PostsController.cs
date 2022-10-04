@@ -23,17 +23,17 @@ public class PostsController : ControllerBase
     public async Task<IActionResult> GetAsync(string id)
     {
         var cacheKey = $"Post-{id}";
-        if (_distributedCache.TryGetValue<Post>(cacheKey, out Post? post))
+        if (!_distributedCache.TryGetValue<Post>(cacheKey, out Post? post))
         {
             post = await _postService.GetAsync(id);
 
             if(post is null) return NotFound();
 
-            await _distributedCache.SetAsync<Post>(cacheKey, post, new DistributedCacheEntryOptions
-            {
-                AbsoluteExpiration = DateTime.Now.AddSeconds(10),
-                SlidingExpiration = TimeSpan.FromSeconds(5),
-            });
+            var options = new DistributedCacheEntryOptions()
+                .SetAbsoluteExpiration(TimeSpan.FromSeconds(10))
+                .SetSlidingExpiration(TimeSpan.FromSeconds(5));
+
+            await _distributedCache.SetAsync<Post>(cacheKey, post, options);
         }
 
         return Ok(post);

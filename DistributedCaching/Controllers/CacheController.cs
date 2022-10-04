@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Caching.Memory;
-using DistributedCaching.Extensions;
 
 namespace InMemoryCaching.Controllers;
 
@@ -17,27 +15,19 @@ public class CacheController : ControllerBase
     }
 
     [HttpGet("{key}")]
-    public IActionResult Get(string key)
+    public async Task<IActionResult> GetAsync(string key)
     {
-        return Ok(_distributedCache.GetStringAsync(key));
-    }
-
-    [HttpGet("{key}/try")]
-    public IActionResult TryGet(string key)
-    {
-        if (_distributedCache.TryGetValue<string>(key, out string? value))
-        {
-            return Ok(value);
-        }
-        return NotFound();
+        return Ok(await _distributedCache.GetStringAsync(key));
     }
 
     [HttpPost("{key}")]
-    public IActionResult Set(string key, string value)
+    public async Task<IActionResult> SetAsync(string key, string value)
     {
         if (value is null) return BadRequest();
 
-        return Ok(_distributedCache.SetAsync<string>(key, value));
+        await _distributedCache.SetStringAsync(key, value);
+
+        return Ok();
     }
 
     [HttpDelete("{key}")]

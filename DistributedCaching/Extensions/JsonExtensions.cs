@@ -6,16 +6,19 @@ namespace DistributedCaching.Extensions;
 
 public static class JsonExtensions
 {
-    public static byte[] Serialize<T>(this T item) => Serialize<T>(item);
+    public static byte[] Serialize<T>(this T item) => Serialize<T>(item, null);
 
-    public static byte[] Serialize<T>(this T item, JsonSerializerOptions? options)
+    public static byte[] Serialize<T>(this T item, JsonSerializerOptions? options = null)
     {
         return Encoding.UTF8.GetBytes(JsonSerializer.Serialize(item, options ?? GetOptions()));
     }
 
-    public static T Deserialize<T>(this byte[] val) => Deserialize<T>(val);
+    public static T? Deserialize<T>(this byte[] val)
+    {
+        return Deserialize<T>(val, null);
+    }
 
-    public static T? Deserialize<T>(this byte[] val, JsonSerializerOptions? options)
+    public static T? Deserialize<T>(this byte[] val, JsonSerializerOptions? options = null)
     {
         return JsonSerializer.Deserialize<T>(val, options ?? GetOptions());
     }

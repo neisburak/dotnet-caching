@@ -11,13 +11,6 @@ public static class CacheExtensions
         return cache.SetAsync(key, value.Serialize(), options);
     }
 
-    public static async Task<T?> GetAsync<T>(this IDistributedCache cache, string key)
-    {
-        var val = await cache.GetAsync(key);
-        if (val is null) return default;
-        return val.Deserialize<T>();
-    }
-
     public static bool TryGetValue<T>(this IDistributedCache cache, string key, out T? value)
     {
         var val = cache.Get(key);
