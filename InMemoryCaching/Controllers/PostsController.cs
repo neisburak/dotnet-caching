@@ -20,28 +20,6 @@ public class PostsController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet("get/{key}")]
-    public IActionResult Get(string key)
-    {
-        var value = _memoryCache.Get<string>(key);
-
-        if(value is not null) return Ok(value);
-        return NotFound();
-    }
-
-    [HttpPost("set/{key}")]
-    public IActionResult Set(string key, string value)
-    {
-        return Ok(_memoryCache.Set(key, value));
-    }
-
-    [HttpDelete("delete/{key}")]
-    public IActionResult Delete(string key)
-    {
-        _memoryCache.Remove(key);
-        return Ok();
-    }
-
     [HttpGet("{id}")]
     public async Task<IActionResult> GetAsync(string id)
     {
