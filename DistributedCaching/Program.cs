@@ -1,3 +1,5 @@
+using DistributedCaching.Extensions;
+using DistributedCaching.Services;
 using Shared.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,9 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.InstanceName = builder.Configuration["Redis:Instance"];
 });
 
+// StackExchange.Redis API Service
+builder.Services.AddSingleton<RedisService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,5 +49,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Extension method to connect to Redis
+app.UseRedis();
 
 app.Run();
