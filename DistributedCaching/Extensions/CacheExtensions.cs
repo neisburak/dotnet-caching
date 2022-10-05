@@ -5,7 +5,7 @@ namespace DistributedCaching.Extensions;
 public static class CacheExtensions
 {
     public static Task SetAsync<T>(this IDistributedCache cache, string key, T value) => SetAsync<T>(cache, key, value, new DistributedCacheEntryOptions());
-    
+
     public static Task SetAsync<T>(this IDistributedCache cache, string key, T value, DistributedCacheEntryOptions options)
     {
         return cache.SetAsync(key, value.Serialize(), options);

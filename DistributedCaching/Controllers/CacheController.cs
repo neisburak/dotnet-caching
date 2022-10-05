@@ -36,4 +36,15 @@ public class CacheController : ControllerBase
         _distributedCache.Remove(key);
         return Ok();
     }
+
+    [HttpGet("file")]
+    public async Task<IActionResult> File()
+    {
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "image.jpg");
+        var byteImage = await System.IO.File.ReadAllBytesAsync(path);
+        await _distributedCache.SetAsync("image", byteImage);
+
+        var bytes = await _distributedCache.GetAsync("image");
+        return File(bytes, "image/jpg");
+    }
 }
