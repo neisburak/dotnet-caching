@@ -1,5 +1,5 @@
-using DistributedCaching.Services;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Utilities;
 using StackExchange.Redis;
 
 namespace DistributedCaching.Controllers;

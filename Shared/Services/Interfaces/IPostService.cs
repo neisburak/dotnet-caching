@@ -1,4 +1,4 @@
-using Shared.Models;
+using Shared.Entities;
 
 namespace Shared.Services.Interfaces;
 

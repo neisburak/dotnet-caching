@@ -1,5 +1,3 @@
-using DistributedCaching.Extensions;
-using DistributedCaching.Services;
 using Shared.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +10,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Adds Shared services to get post data
-builder.Services.AddServices();
+builder.Services.AddServices(options =>
+{
+    options.Configuration = builder.Configuration["Redis:Configuration"];
+});
 
 // Adds Distributed Memory Cache
 // builder.Services.AddDistributedMemoryCache();
@@ -32,9 +33,6 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.InstanceName = builder.Configuration["Redis:Instance"];
 });
 
-// StackExchange.Redis API Service
-builder.Services.AddSingleton<RedisService>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -49,8 +47,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-// Extension method to connect to Redis
-app.UseRedis();
 
 app.Run();

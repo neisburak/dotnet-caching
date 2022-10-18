@@ -1,4 +1,4 @@
-﻿namespace Shared.Models;
+﻿namespace Shared.Entities;
 
 public class Post
 {

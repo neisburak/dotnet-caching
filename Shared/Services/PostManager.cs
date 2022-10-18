@@ -1,5 +1,5 @@
 using Shared.Extensions;
-using Shared.Models;
+using Shared.Entities;
 using Shared.Services.Interfaces;
 
 namespace Shared.Services;

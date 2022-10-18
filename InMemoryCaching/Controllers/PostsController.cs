@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Shared.Models;
+using Shared.Entities;
 using Shared.Services.Interfaces;
 
 namespace InMemoryCaching.Controllers;

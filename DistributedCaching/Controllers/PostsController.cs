@@ -1,7 +1,7 @@
 using DistributedCaching.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
-using Shared.Models;
+using Shared.Entities;
 using Shared.Services.Interfaces;
 
 namespace DistributedCaching.Controllers;
